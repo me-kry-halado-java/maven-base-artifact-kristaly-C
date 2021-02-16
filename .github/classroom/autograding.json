@@ -59,6 +59,16 @@
       "comparison": "exact",
       "timeout": 10,
       "points": 10
+    },
+    {
+      "name": "kivonas",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "12 - 5",
+      "output": "7",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
     }
   ]
 }
