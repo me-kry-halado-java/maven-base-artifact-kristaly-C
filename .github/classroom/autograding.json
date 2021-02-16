@@ -65,7 +65,7 @@
       "setup": "",
       "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
       "input": "12 - 5",
-      "output": "7",
+      "output": "7.0",
       "comparison": "exact",
       "timeout": 10,
       "points": 10
