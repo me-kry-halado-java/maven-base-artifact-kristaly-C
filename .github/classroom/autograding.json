@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "name": "build",
+      "setup": "",
+      "run": "mvn package",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "osszeadas",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "3 + 4",
+      "output": "7.0",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "ervenytelen bemenet",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "aa",
+      "output": "-",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "szorzas",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "6*4",
+      "output": "24",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "osztas",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "9 / 2",
+      "output": "4.5",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 20
+    },
+    {
+      "name": "osztas 0-val",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "6/0",
+      "output": "-",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    }
+  ]
+}
