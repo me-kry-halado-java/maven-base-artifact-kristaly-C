@@ -3,6 +3,7 @@ package hu.meiit.haladojava.calculator;
 public class Calculalas {
 
     private final String eredmenyem;
+    private static final String ErrorSymbol = "-";
 
     public Calculalas(String bemenet) {
         eredmenyem = consoleSzamitas(bemenet);
@@ -34,7 +35,7 @@ public class Calculalas {
         return vissza;
     }
 
-    private static int toresPozKeresese(String bemenet){
+    private static int toresPozKeresese(String bemenet) {
 
         if (bemenet.contains("+")) {
             return bemenet.indexOf("+");
@@ -56,8 +57,8 @@ public class Calculalas {
         String[] ertekVissza = new String[3];
         int tores = toresPozKeresese(bemenet);
 
-        if(tores == -1){
-            return "-";
+        if (tores == -1) {
+            return ErrorSymbol;
         }
 
         if (tores != 0) {
@@ -75,23 +76,30 @@ public class Calculalas {
 
     private static String adatkonverzio(String[] parts) {
         int hibasadat = 0;
-        int op1 = 0;
-        int op2 = 0;
+        double op1 = 0;
+        double op2 = 0;
         try {
-            op1 = Integer.parseInt(parts[0]);
-            op2 = Integer.parseInt(parts[2]);
+            op1 = Double.parseDouble(parts[0]);
+            op2 = Double.parseDouble(parts[2]);
         } catch (NumberFormatException e) {
             hibasadat++;
         }
+
         if (hibasadat == 0) {
             return szamitas(op1, op2, parts[1]);
         } else {
-            return "-";
+            return ErrorSymbol;
         }
     }
 
-    private static String szamitas(int op1, int op2, String operator) {
-        int szamitasiEredmeny = 0;
+    private static int secondNumberIsNull(double secondNumber) {
+        if (secondNumber == 0)
+            return 1;
+        return 0;
+    }
+
+    private static String szamitas(double op1, double op2, String operator) {
+        double szamitasiEredmeny = 0;
         switch (operator) {
             case "+":
                 szamitasiEredmeny = op1 + op2;
@@ -100,7 +108,14 @@ public class Calculalas {
                 szamitasiEredmeny = op1 - op2;
                 break;
             case "/":
-                szamitasiEredmeny = op1 / op2;
+                try {
+                    szamitasiEredmeny = op1 / op2;
+                    if (szamitasiEredmeny == Double.POSITIVE_INFINITY || szamitasiEredmeny == Double.NEGATIVE_INFINITY) {
+                        throw new ArithmeticException();
+                    }
+                } catch (ArithmeticException ae) {
+                    return ErrorSymbol;
+                }
                 break;
             case "*":
                 szamitasiEredmeny = op1 * op2;
@@ -111,7 +126,6 @@ public class Calculalas {
 
         return String.valueOf(szamitasiEredmeny);
     }
-
 
     public void EredmenyPrint() {
         try {
