@@ -35,7 +35,7 @@
       "setup": "",
       "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
       "input": "6*4",
-      "output": "24",
+      "output": "24.0",
       "comparison": "exact",
       "timeout": 10,
       "points": 20
@@ -56,6 +56,16 @@
       "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
       "input": "6/0",
       "output": "-",
+      "comparison": "exact",
+      "timeout": 10,
+      "points": 10
+    },
+    {
+      "name": "kivonas",
+      "setup": "",
+      "run": "mvn -q exec:java -Dexec.mainClass=\"hu.meiit.haladojava.calculator.App\"",
+      "input": "12 - 5",
+      "output": "7.0",
       "comparison": "exact",
       "timeout": 10,
       "points": 10
